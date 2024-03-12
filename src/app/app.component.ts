@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
+import { PopupService } from './core/services/popup.service';
+import { createCustomElement } from '@angular/elements';
+import { PopupComponent } from './shared/components/popup/popup.component';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +14,9 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 })
 export class AppComponent {
   title = 'pickup_sports_client';
+
+  constructor(injector:Injector, public popup:PopupService) {
+    const popupElement = createCustomElement(PopupComponent, {injector});
+    customElements.define('popup-element', popupElement);
+  }
 }
