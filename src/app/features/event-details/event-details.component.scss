@@ -58,3 +58,19 @@
 .event-image img {
   max-width: 100%;
 }
+
+.guests-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.guest-item {
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

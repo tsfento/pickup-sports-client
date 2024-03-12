@@ -21,4 +21,12 @@ export class EventService {
   createEvent(event:Event) {
     return this.http.post(`${environment.apiUrl}/events`, event);
   }
+
+  joinEvent(eventId:number) {
+    return this.http.post(`${environment.apiUrl}/events/${eventId}/join`, {});
+  }
+
+  leaveEvent(eventId:number) {
+    return this.http.delete(`${environment.apiUrl}/events/${eventId}/leave`);
+  }
 }

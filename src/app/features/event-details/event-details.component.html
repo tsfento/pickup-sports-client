@@ -9,7 +9,7 @@
       {{ event.start_date_time | date:'medium' }} - {{ event.end_date_time | date:'medium' }}
     </span>
     <div class="event-creator">
-      created by: <strong>{{ event.user.username }}</strong>
+      created by: <strong>{{ event.creator.username }}</strong>
     </div>
   </div>
   <div class="sports-container">
@@ -20,4 +20,20 @@
       }
     </ul>
   </div>
+  @if (event.creator.id !== currentUser?.id) {
+    <button class="join-button" (click)="toggleJoinEvent()">{{ hasJoined ? 'Leave' : 'Join' }}</button>
+  }
+
+  <div class="guests-container">
+    @for (guest of guests; track trackById) {
+      <div class="guest-item">
+        @if (guest.empty) {
+          <div>Open Slot</div>
+        } @else {
+          <div>{{ guest.username }}</div>
+        }
+      </div>
+    }
+  </div>
+
 </div>
